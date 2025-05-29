@@ -4,4 +4,4 @@ COPY . .
 RUN mvn clean install package
 
 FROM quay.io/lib/tomcat
-COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/
