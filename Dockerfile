@@ -1,4 +1,4 @@
-FROM quay.io/snowdrop/maven-openjdk11 AS builder
+FROM quay.io/ibm/maven:3.6.3 AS builder
 WORKDIR /app
 COPY . .
 RUN mvn clean install package
