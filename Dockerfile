@@ -1,8 +1,23 @@
-FROM registry.access.redhat.com/ubi8/openjdk-17 AS builder
-WORKDIR /app
-COPY . .
-RUN microdnf install -y maven git && \
-    mvn clean install package
+# Étape de compilation (Build stage)
+# FROM quay.io/snowdrop/maven-openjdk8:latest AS build
 
-FROM registry.access.redhat.com/jboss-webserver-5/webserver53-tomcat9-openshift
-COPY --from=builder /app/target/*.war /opt/webserver/webapps/
+FROM csanchez/maven:3.8-openjdk-11 AS build
+
+USER root
+RUN chmod -R 777 /root
+
+WORKDIR /app
+
+# Copie des fichiers nécessaires à la construction
+COPY pom.xml .
+COPY src ./src
+
+# Construction du projet (package WAR)
+RUN mvn clean package
+
+# Étape de déploiement (Runtime stage)
+FROM quay.io/lib/tomcat:9-jdk11-corretto
+# Remarque : `quay.io/lib/tomcat` semble incorrect, `quay.io/library/tomcat` ou `tomcat` depuis Docker Hub est plus fiable
+
+# Copier l'artefact WAR dans le répertoire de déploiement de Tomcat
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/myapp.war
