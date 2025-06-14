@@ -9,6 +9,8 @@ build:
   artifacts:
     paths:
       - target/myapp-g15.war
+  tags: 
+    - linux
 
 deploy:
   stage: deploy
@@ -17,3 +19,5 @@ deploy:
   script:
     - sudo cp target/myapp-g15.war /opt/tomcat/webapps/
     - sudo systemctl restart tomcat
+   tags: 
+    - linux
