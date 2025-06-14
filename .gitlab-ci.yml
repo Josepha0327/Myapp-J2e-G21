@@ -26,7 +26,7 @@ deploy:
     - sleep 5  # Délai de sécurité
   script:
     - until [ -f "target/myapp-CICD.war" ]; do sleep 1; done  # Attente active
-    - sudo cp target/myapp-g15.war /opt/tomcat/webapps/
+    - sudo cp target/myapp-CICD.war /opt/tomcat/webapps/
     - sudo systemctl restart tomcat
   tags:
    - linux 
