@@ -8,7 +8,7 @@ build:
   script:
     - mvn clean install package
   tags:
-   - linux 
+   - Ubuntu
   artifacts:
     paths:
       - target/myapp-CICD.war
@@ -29,4 +29,4 @@ deploy:
     - sudo cp target/myapp-CICD.war /opt/tomcat/webapps/
     - sudo systemctl restart tomcat
   tags:
-   - linux 
+   - Ubuntu
