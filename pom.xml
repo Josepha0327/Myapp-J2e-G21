@@ -26,7 +26,7 @@
     </dependencies>
 
     <build>
-        <finalName>myapp-g17</finalName>
+        <finalName>myapp-g17-houcem</finalName>
         <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
