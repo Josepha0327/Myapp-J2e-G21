@@ -1,9 +1,9 @@
 ---
-name: deploy war on tomcat
-hosts: localhost
-become: true
+- name: deploy war on tomcat
+  hosts: localhost
+  become: true
 
-tasks:
+  tasks:
     - name: copy war 
       copy:
           src:  myapp-g18-houcem.war
