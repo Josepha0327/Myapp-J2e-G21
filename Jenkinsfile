@@ -28,6 +28,24 @@ pipeline {
               }
           }
         
+
      }
+       post {
+
+          success {
+  
+                     echo " Pipline ${env.JOB_NAME} Réussi!!!"
+
+          }
+
+          failure {
+                   echo " Echec de Pipline ${env.JOB_NAME}!!!"
+                  
+          }
+
+       }
+
+   
+
  
 }
