@@ -2,6 +2,7 @@
 - name: deploy war
   hosts: localhost
   become: true
+  remote!user: apx18
 
   tasks:
        - name: copie war
