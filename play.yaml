@@ -1,0 +1,10 @@
+--- 
+- name: deploy war
+  hosts: all
+  become: true
+
+  tasks:
+       - name: copie war
+         copy:
+            src: myapp-g19.war
+            dest: /opt/tomcat9/webapps/
