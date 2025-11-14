@@ -60,7 +60,7 @@ pipeline {
                               echo ${BUILD_NUMBER} 
                               imageTag=$(grep -oP '(?<=maven-app:)[^ ]+' maven.yaml)
                               echo $imageTag
-                              sed -i "s/houcemdevops:${imageTag}/${MAVEN_IMAGE}/" maven.yaml 
+                              sed -i "s/houcemdevops/maven-app:${imageTag}/${MAVEN_IMAGE}/" maven.yaml 
                               git add maven.yaml
                               git commit -m "Update deployement Image to version \${BUILD_NUMBER}"
                               git push https://${GITLAB_TOKEN}:${GIT_USER_NAME}@repo-dev.efi-academy.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
