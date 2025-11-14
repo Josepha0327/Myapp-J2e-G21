@@ -58,7 +58,7 @@ pipeline {
                               git config user.name "houcem" 
                               BUILD_NUMBER=${BUILD_NUMBER}
                               echo ${BUILD_NUMBER} 
-                              imageTag=$(grep -oP '(?<=maven-app:)[^]+' maven.yaml)
+                              imageTag=$(grep -oP '(?<=maven-app:)[^ ]+' maven.yaml)
                               echo $imageTag
                               sed -i "s/MAVEN_IMAGE:${imageTag}/${MAVEN_IMAGE}:${BUILD_NUMBER}/" maven.yaml 
                               git add maven.yaml
