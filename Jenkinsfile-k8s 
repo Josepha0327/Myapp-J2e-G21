@@ -47,9 +47,15 @@ pipeline {
 
                  withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: 'id_k8s', namespace: '', serverUrl: '']]) {
                          sh '''
+                            sed -i "s|{{MAVEN_IMAGE}}|${env.MAVEN_IMAGE}|g" deploy.yaml
 
+                            kubectl apply -f deploy.yaml
+                            sleep 10 
+                            kubectl get all -n houcemapp
+
+                            '''
                          
-}
+} 
 
                 }
 
