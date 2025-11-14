@@ -44,10 +44,10 @@ pipeline {
         stage('Deploy K8s'){
             steps{
               
-
+                 script {
                  withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: 'id_k8s', namespace: '', serverUrl: '']]) {
                          sh '''
-                            sed -i "s|{{MAVEN_IMAGE}}|${env.MAVEN_IMAGE}|g" deploy.yaml
+                            sed -i "s|{{MAVEN_IMAGE}}|$MAVEN_IMAGE|g" deploy.yaml
 
                             kubectl apply -f deploy.yaml
                             sleep 10 
@@ -57,7 +57,7 @@ pipeline {
                          
 } 
 
-                
+                 }  
 
                 
             }
