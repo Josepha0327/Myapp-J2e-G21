@@ -64,7 +64,7 @@ pipeline {
                               sed -i "s|${MAVEN_REPO}:${imageTag}|${MAVEN_IMAGE}|" maven.yaml 
                               git add maven.yaml
                               git commit -m "Update deployement Image to version \${BUILD_NUMBER}"
-                              git push https://${GITLAB_TOKEN}:${GIT_USER_NAME}@repo-dev.efi-academy.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
+                              git push https://${GIT_USER_NAME}:${GITLAB_TOKEN}@repo-dev.efi-academy.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
                               ''' 
     
               }
