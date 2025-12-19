@@ -90,7 +90,7 @@ pipeline {
                      sh '''
                      git config user.name "houcem"
                      git config user.email "houcem@test.com"
-                     echo "${BUILD_NUMBER}
+                     echo "${BUILD_NUMBER}"
                      imageTag=$(grep -oP '?<=houcemdevops/maven-argo:)[^ ]+' deploy.yaml)
                      echo $imageTag
                      sed -i "s|houcemdevops/maven-argo:${imageTag}|${env.MAVEN_IMAGE}:${BUILD_NUMBER}|" deploy.yaml
